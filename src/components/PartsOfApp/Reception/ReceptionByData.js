@@ -3,9 +3,10 @@ import {TouchableOpacity, View} from 'react-native'
 import { Title as DateTitle} from "../../helpers/Title";
 import styled from 'styled-components/native';
 import { ClientReceptionInfo } from './ClientReceptionInfo';
+import {navigationRoutes} from '../../../../App';
 
-export const ReceptionByData = ({date, receptions}) => {
-
+export const ReceptionByData = ({date, receptions, navigationObject}) => {
+    const pacientCardRoute = navigationRoutes.cardOfPacient.route;
     // const sortArrayToNearerByTime = () =>{
     //     const timeInMinutes        = new Date().getMinutes() + (new Date().getHours() * 60)
     //     const takeHours   = bindedTime => bindedTime.split('.')[0];
@@ -29,7 +30,7 @@ export const ReceptionByData = ({date, receptions}) => {
 
     const renderReceptions = () => {
         return receptions.map(({fullName, bindedTime, order, avatar, id}) => (
-            <TouchableOpacity key={id}>
+            <TouchableOpacity key={id} onPress={navigationObject.navigate.bind(this, pacientCardRoute)}>
                 <ClientReceptionInfo 
                     fullName={fullName}
                     bindedTime={bindedTime}

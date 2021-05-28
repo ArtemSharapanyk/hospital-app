@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { accent} from '../../../styles/colorsApp';
+import { accent, lightGreyDecoratedColor} from '../../../styles/colorsApp';
 import { DescriptionOfTitle } from '../../helpers/DescriptionOfTitle';
 import { Title } from '../../helpers/Title';
 
@@ -28,13 +28,13 @@ export const ClientReceptionInfo = ({fullName, bindedTime, order, avatar,}) => {
     )
 };
 
-const noActiveColor = '#E9F5FF';
+
 
 const isActiveBtn = (active) => active ? `
     background-color: ${accent};
     color: #fff;
 ` : `
-    background-color: ${noActiveColor};
+    background-color: ${lightGreyDecoratedColor};
     color: ${accent}
 `; 
 

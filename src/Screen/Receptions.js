@@ -10,8 +10,10 @@ import { mainBg } from '../styles/colorsApp';
 
 
 
-export const Receptions = () => {
+
+export const Receptions = ({navigation}) => {
     const {receptions} = useContext(ReceptionContext);
+
     
     const renderReceptionsBlocks = () => {
         if(!receptions.length){
@@ -26,6 +28,7 @@ export const Receptions = () => {
                     key={date}
                     date={date}
                     receptions={receptions}
+                    navigationObject={navigation}
                 />
             ));
         }
@@ -38,7 +41,7 @@ export const Receptions = () => {
                     {renderReceptionsBlocks()}
                 </ScrollView>
             </Wrapper>
-            <ReceptionBtn/>
+            <ReceptionBtn />
         </Container>
 
     )
