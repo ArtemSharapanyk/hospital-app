@@ -11,6 +11,11 @@ import { accent, ligthGreyDecoratedColor } from './src/styles/colorsApp';
 import { PacientCard } from './src/Screen/PacientCard';
 import { Btn as NavigationBackButton } from './src/components/UI/Btn/Btn';
 import { navigationBtnBack } from './src/components/UI/Btn/BtnsTypes';
+import { AddReception } from './src/Screen/AddReception';
+import {ChangeReception} from './src/Screen/ChangeReception';
+import {ChangePacient} from './src/Screen/ChangePacient';
+import { AddPacient } from './src/Screen/AddPacient';
+
 
 const Navigation = createStackNavigator();
 
@@ -22,26 +27,38 @@ export const navigationRoutes = {
   cardOfPacient: {
     title: 'Карта пациента',
     route: 'CardOfPacient'
+  },
+  addPacient: {
+    title: 'Добавить пациента',
+    route: 'addPacient'
+  },
+  addReception: {
+    title: 'Добавить прием',
+    route: 'addReception'
+  },
+  changeReception: {
+    title: 'Изменить прием',
+    route: 'changeReception'
+  },
+  changePacient: {
+    title: 'Изменить пациента',
+    route: 'changePacient'
   }
 };
 
 const AllScreenOptionsConfig = ({navigation}) => ({
-  headerStyle: {
-    elevation: 0,
-    borderBottomColor: ligthGreyDecoratedColor,
-    borderBottomWidth: 1,
-  },
   headerTitleStyle: {
     fontWeight: 'bold',
     color: accent,
     fontSize: 25,
-    paddingTop: StatusBar.currentHeight + 10,
-    paddingBottom: StatusBar.currentHeight + 10 
+  },
+  headerStyle: {
+    elevation: 0
   },
   headerLeft: () => (
     <NavigationBackButton onTouch={navigation.goBack} type={navigationBtnBack} />
   ),
-  ...TransitionPresets.SlideFromRightIOS
+  ...TransitionPresets.SlideFromRightIOS,
 });
 
 
@@ -57,11 +74,30 @@ export default () => {
               >
                   <Navigation.Screen name={navigationRoutes.receptions.route} options={{
                     title: navigationRoutes.receptions.title,
+                    headerStyle: {
+                      elevation: 0,
+                      borderBottomColor: ligthGreyDecoratedColor,
+                      borderBottomWidth: 1,
+                    },
                     headerLeft: ({}) => null
                   }} component={Receptions} />
+
                   <Navigation.Screen name={navigationRoutes.cardOfPacient.route} options={{
                     title: navigationRoutes.cardOfPacient.title
                   }} component={PacientCard} />
+
+                  <Navigation.Screen name={navigationRoutes.addPacient.route} options={{
+                    title: navigationRoutes.addPacient.title
+                  }} component={AddPacient} />
+
+                  <Navigation.Screen name={navigationRoutes.addReception.route} options={{
+                    title: navigationRoutes.addReception.title
+                  }} component={AddReception} />
+
+                  <Navigation.Screen name={navigationRoutes.changePacient.route} options={{
+                    title: navigationRoutes.changePacient.title
+                  }} component={ChangePacient} />
+
               </Navigation.Navigator>
           </NavigationContainer>
         </ReceptionState>

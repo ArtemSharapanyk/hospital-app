@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import { receptionReducer } from "../Reception/receptionReducer";
+import { receptionsReducer } from "./Receptions/receptionsReducer";
+import { usersReducer } from "./Users/usersReducer";
 
 export const rootReducer = combineReducers({
-    reception: receptionReducer
+    Users: usersReducer,
+    Receptions: receptionsReducer
 });

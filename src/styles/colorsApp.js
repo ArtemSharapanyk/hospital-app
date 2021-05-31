@@ -6,3 +6,6 @@ export const mainColor               = '#000000';
 export const decoratedColor          = '#8B979F';
 export const mainBg                  = '#FFFFFF';
 export const lightGreyDecoratedColor = '#E9F5FF';
+export const pacientCardBg           = '#F8FAFD';
+export const greenDecorated          = '#E5F6DF';
+export const boldGreenColor          = '#61BB42';

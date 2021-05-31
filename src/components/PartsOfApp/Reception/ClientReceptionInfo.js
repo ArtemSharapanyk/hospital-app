@@ -1,11 +1,14 @@
 import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { accent, lightGreyDecoratedColor} from '../../../styles/colorsApp';
 import { DescriptionOfTitle } from '../../helpers/DescriptionOfTitle';
 import { Title } from '../../helpers/Title';
+import { EvilIcons as PenIcon} from '@expo/vector-icons'; 
+import { Ionicons as CloseIcon} from '@expo/vector-icons'; 
 
 
-export const ClientReceptionInfo = ({fullName, bindedTime, order, avatar,}) => {
+export const ClientReceptionInfo = ({fullName, bindedTime, diagnose, avatar,}) => {
     return (
         <ReceptionBlock>
             <ReceptionBlockAvatar source={{
@@ -17,7 +20,7 @@ export const ClientReceptionInfo = ({fullName, bindedTime, order, avatar,}) => {
                 </Title>
                 <ReceptionBlockClientInfoProblem>
                     <DescriptionOfTitle size={17}>
-                        {order}
+                        {diagnose}
                     </DescriptionOfTitle>
                 </ReceptionBlockClientInfoProblem>
             </ReceptionBlockClientInfo>
@@ -27,6 +30,26 @@ export const ClientReceptionInfo = ({fullName, bindedTime, order, avatar,}) => {
         </ReceptionBlock>
     )
 };
+
+
+export const HiddenItemWithActions = ({rowMap,data,deleteReception,changeReception}) => {
+    return (
+        <View style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            marginTop: 15
+
+        }}>
+            <ChangeBtn activeOpacity={0.6} onPress={deleteReception}>
+                <PenIcon name="pencil" size={20} color="white" />
+            </ChangeBtn>
+            <DeleteBtn onPress={changeReception}>
+                <CloseIcon activeOpacity={0.6} name="close" size={20} color="white" />
+            </DeleteBtn>
+        </View>
+    );
+}
 
 
 
@@ -48,6 +71,26 @@ const ReceptionBlock = styled.View`
     border-bottom-color: #F3F3F3;
     border-bottom-width: 1px;
     border-style: solid;
+    background-color: #fff;
+    padding-right: 10px;
+`;
+
+const DeleteBtn = styled.TouchableOpacity`
+    width: 80px;
+    height: 70px;
+    background-color: #F85A5A;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+`;
+
+const ChangeBtn = styled.TouchableOpacity`
+    width: 80px;
+    height: 70px;
+    background-color: #B4C1CB;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
 `;
 
 const widthHeigOfAvatar = 40;

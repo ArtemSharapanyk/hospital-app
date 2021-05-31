@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components';
+import { navigationRoutes } from '../../App';
 import { Container } from '../components/helpers/Container';
 import { Wrapper } from '../components/helpers/Wrapper';
 import { ReceptionByData } from '../components/PartsOfApp/Reception/ReceptionByData';
@@ -11,37 +12,43 @@ import { mainBg } from '../styles/colorsApp';
 
 
 
-export const Receptions = ({navigation}) => {
-    const {receptions} = useContext(ReceptionContext);
 
-    
+export const Receptions = ({navigation}) => {
+    const {allReceptions, getReceptions} = useContext(ReceptionContext);
+
+    useEffect(() => {
+        getReceptions();
+    }, []);
+
+
     const renderReceptionsBlocks = () => {
-        if(!receptions.length){
-            return  (
-                <EmptyReceptionsMessage>
-                    It hasn't had any receptions
-                </EmptyReceptionsMessage>
-            );
-        }else{
-            return receptions.map(({date, receptions}) => (
-                <ReceptionByData
-                    key={date}
-                    date={date}
-                    receptions={receptions}
-                    navigationObject={navigation}
-                />
-            ));
+        if(allReceptions){
+
+            if(!allReceptions.length){
+                return  (
+                    <EmptyReceptionsMessage>
+                        It hasn't had any receptions
+                    </EmptyReceptionsMessage>
+                );
+            }else{
+                return allReceptions.map(({date,receptions}) => (
+                    <ReceptionByData
+                        key={date}
+                        date={date}
+                        receptions={receptions}
+                        navigationObject={navigation}
+                    />
+                ));
+            }
         }
     };
 
     return (
         <Container bg={mainBg}>
             <Wrapper>
-                <ScrollView>
-                    {renderReceptionsBlocks()}
-                </ScrollView>
+                {renderReceptionsBlocks()}
             </Wrapper>
-            <ReceptionBtn />
+            <ReceptionBtn onTouch={navigation.navigate.bind(this, navigationRoutes.addReception.route)} />
         </Container>
 
     )
