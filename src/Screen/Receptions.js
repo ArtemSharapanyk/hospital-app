@@ -2,13 +2,12 @@ import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components';
 import { navigationRoutes } from '../../App';
-import { Container } from '../components/helpers/Container';
-import { Wrapper } from '../components/helpers/Wrapper';
 import { ReceptionByData } from '../components/PartsOfApp/Reception/ReceptionByData';
 import { Btn as ReceptionBtn } from '../components/UI/Btn/Btn';
 import { ReceptionContext } from '../States/Contexts/ReceptionContext';
 import { mainBg } from '../styles/colorsApp';
-
+import { Container } from '../components/helpers/Container';
+import { Wrapper } from '../components/helpers/Wrapper';
 
 
 
@@ -19,6 +18,7 @@ export const Receptions = ({navigation}) => {
     useEffect(() => {
         getReceptions();
     }, []);
+
 
 
     const renderReceptionsBlocks = () => {
@@ -45,9 +45,11 @@ export const Receptions = ({navigation}) => {
 
     return (
         <Container bg={mainBg}>
-            <Wrapper>
-                {renderReceptionsBlocks()}
-            </Wrapper>
+            <ScrollView>
+                <Wrapper>
+                    {renderReceptionsBlocks()}
+                </Wrapper>
+            </ScrollView>
             <ReceptionBtn onTouch={navigation.navigate.bind(this, navigationRoutes.addReception.route)} />
         </Container>
 

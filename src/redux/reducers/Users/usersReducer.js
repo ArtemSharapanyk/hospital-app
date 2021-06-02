@@ -1,28 +1,60 @@
-import { CHANGE_RECEPTION, CREATE_RECEPTION, REMOVE_RECEPTION } from "../../actionsTypes";
+import {ADD_USER, CHANGE_RECEPTION_DATA} from '../../actionsTypes';
 
 const initialState = {
     users: [
         {
             fullName:'Анжела Матиева',
             id: Math.random().toString(),
-            phoneNumber: '+7 (999) 200-66-55',
-            avatar: 'https://www.pngkey.com/png/full/934-9343148_2p2a2179-circle-girl.png',
+            phoneNumber: '+79992006655',
+            avatar: 'https://www.pngkey.com/png/full/940-9400019_mindy-circle-girl.png',
             receptions: [
                 {
                     bindedTime: '12.30',
                     diagnose: 'пульпит, удаление зуба',
                     id: Math.random().toString(),
-                    date: '11.10.2021',
+                    date: '12.10.2021',
                     price: '1500 Р',
                     numberOfTooth: 13
                 },
                 {
                     bindedTime: '13.30',
-                    diagnose: 'удаление мозга',
+                    diagnose: 'удаление гноя',
                     id: Math.random().toString(),
                     date: '12.10.2021',
                     price: '1500 Р',
                     numberOfTooth: 22
+                }
+            ]
+        },
+        {
+            fullName:'Светлана Игоревна',
+            id: Math.random().toString(),
+            phoneNumber: '+520851826',
+            avatar: 'https://www.pngfind.com/pngs/m/154-1548230_circle-headshot-girl-hd-png-download.png',
+            receptions: [
+                {
+                    bindedTime: '12.30',
+                    diagnose: 'кариес, боль в ухе',
+                    id: Math.random().toString(),
+                    date: '12.11.2021',
+                    price: '200 Р',
+                    numberOfTooth: 15
+                },
+            ]
+        },
+        {
+            fullName:'Екатерина Великая',
+            id: Math.random().toString(),
+            phoneNumber: '+10210244',
+            avatar: 'https://www.nicepng.com/png/detail/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png',
+            receptions: [
+                {
+                    bindedTime: '10.00',
+                    diagnose: 'боль в ухе',
+                    id: Math.random().toString(),
+                    date: '12.11.2021',
+                    price: '200 Р',
+                    numberOfTooth: 15
                 },
             ]
         },
@@ -31,20 +63,14 @@ const initialState = {
 
 export const usersReducer = (state = initialState, {type, payload}) => {
     switch(type){
-        case CREATE_RECEPTION:
-            return {
-                ...state,
-                receptions: [...state.receptions, payload]
-            }
-        case REMOVE_RECEPTION:
+        case CHANGE_RECEPTION_DATA:
             return {
                 ...state, 
-                receptions: state.receptions.filter(({id}) => id !== payload)
+                users: payload
             }
-        case CHANGE_RECEPTION:
+        case ADD_USER:
             return {
-                ...state,
-                receptions: payload
+                ...state, users: payload
             }
         default:
             return state;

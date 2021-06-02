@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { ReceptionContext } from '../../../States/Contexts/ReceptionContext';
 import { Title } from '../../helpers/Title';
@@ -38,6 +39,7 @@ export const ReceptionsWithDoctor = ({userId}) => {
 const ReceptionsBlock = styled.View`
     width: 100%;
     margin-top: 20px;
+    padding-bottom: 20px;
 `;
 
 const TitleOfReceptionBlock = styled.Text`

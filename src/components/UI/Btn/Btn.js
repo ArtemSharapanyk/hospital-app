@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { accent, accentGreen } from '../../../styles/colorsApp';
 import { AntDesign as PlusIcon } from '@expo/vector-icons'; 
-import { baseBtn, callBtn, modalBtn, navigationBtnBack, receptionBtn } from './BtnsTypes';
+import { baseBtn, callBtn, modalBtn, navigationBtnBack, navigationBtnBar, receptionBtn } from './BtnsTypes';
 import { AntDesign as BackIcon } from '@expo/vector-icons'; 
 import { Ionicons as CallIcon } from '@expo/vector-icons'; 
 import { Entypo as Dots} from '@expo/vector-icons'; 
+import { FontAwesome5 as BarIcon } from '@expo/vector-icons'; 
 
 export const Btn = (
         {
@@ -35,6 +36,15 @@ export const Btn = (
         )
     }
 
+    if(type === navigationBtnBar){
+        return (
+            <NavigationBtn>
+                <BarIcon name="bars" size={24} color="black" onPress={onTouch} />
+            </NavigationBtn>
+        )
+    }
+
+
     if(type === callBtn){
         const {width, height} = volume;
         const defaultVolume = 45; 
@@ -57,6 +67,7 @@ export const Btn = (
                 width={width || defaultWidth}
                 paddingVertical={paddingVertical || paddingDefault}
                 activeOpacity={0.8}
+                onPress={onTouch}
             >
                 {children}
             </BaseBtn>
@@ -123,6 +134,10 @@ const BaseBtn = styled.TouchableOpacity`
 `;
 
 const ModalBtn = styled.TouchableOpacity`
+
+`;
+
+const NavigationBtn = styled.TouchableOpacity`
 
 `;
 

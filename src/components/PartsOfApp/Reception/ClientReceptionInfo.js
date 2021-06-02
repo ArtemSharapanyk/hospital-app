@@ -41,10 +41,10 @@ export const HiddenItemWithActions = ({rowMap,data,deleteReception,changeRecepti
             marginTop: 15
 
         }}>
-            <ChangeBtn activeOpacity={0.6} onPress={deleteReception}>
+            <ChangeBtn activeOpacity={0.6} onPress={changeReception}>
                 <PenIcon name="pencil" size={20} color="white" />
             </ChangeBtn>
-            <DeleteBtn onPress={changeReception}>
+            <DeleteBtn onPress={deleteReception}>
                 <CloseIcon activeOpacity={0.6} name="close" size={20} color="white" />
             </DeleteBtn>
         </View>

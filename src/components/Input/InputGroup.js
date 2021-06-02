@@ -5,7 +5,7 @@ import { TextInput } from './Input';
 
 
 
-export const InputGroup = ({firtsControl, secondControl, placeholder, fontSize}) => {
+export const InputGroup = ({firtsControl, secondControl, placeholder, fontSize, validFunc}) => {
     const [firstValue, firstChange]   = firtsControl;
     const [secondValue, secondChange] = secondControl;
     
@@ -14,7 +14,7 @@ export const InputGroup = ({firtsControl, secondControl, placeholder, fontSize})
         <InputBox>
             <InputWithAnotherWidth>
                 <TextInput
-                    value={firstValue}
+                    value={firstValue.value}
                     onChangeText={firstChange}
                     placeholder={placeholder[0]}
                     fontSize={fontSize}
@@ -24,7 +24,7 @@ export const InputGroup = ({firtsControl, secondControl, placeholder, fontSize})
             
             <InputWithAnotherWidth>
                 <TextInput
-                    value={secondValue}
+                    value={secondValue.value}
                     onChangeText={secondChange}
                     placeholder={placeholder[1]}
                     fontSize={fontSize}

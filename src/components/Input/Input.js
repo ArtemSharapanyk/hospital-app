@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Input = ({label, value, changeValue, first,
-    fontSize = 20
+    fontSize = 20, validFunc
 }) => {
 
     return (
@@ -10,7 +10,7 @@ export const Input = ({label, value, changeValue, first,
             <Label>
                 {label}
             </Label>
-            <TextInput value={value} onChangeText={changeValue}  />
+            <TextInput  value={value} onChangeText={changeValue}  />
         </InputBlock>
     )
 };
@@ -30,5 +30,5 @@ const Label = styled.Text`
 
 const InputBlock = styled.View`
     width: 100%;
-    margin-top:  ${({first}) => first ? 10 : 20}px;
+    margin-top:  ${({first}) => first ? 10 : 25}px;
 `;

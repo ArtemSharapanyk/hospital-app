@@ -47,9 +47,9 @@ const ReceptionCardBlockShadow = {
         height: 1,
     },
     shadowOpacity: 0,
-    shadowRadius: 10,
+    shadowRadius: 0,
     
-    elevation: 2,
+    elevation: 1,
 }
 
 const ReceptionCardBlock = styled.View`

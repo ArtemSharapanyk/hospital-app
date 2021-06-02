@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Text, TouchableOpacity, View} from 'react-native'
 import { Title as DateTitle} from "../../helpers/Title";
 import styled from 'styled-components/native';
@@ -6,11 +6,15 @@ import { ClientReceptionInfo, HiddenItemWithActions } from './ClientReceptionInf
 import {navigationRoutes} from '../../../../App';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { months } from '../../../mounthConfig';
+import { ReceptionContext } from '../../../States/Contexts/ReceptionContext';
 
 export const ReceptionByData = ({date, receptions, navigationObject}) => {
     const pacientCardRoute = navigationRoutes.cardOfPacient.route;
 
-    const fromIndexOfMounthToMounthInVerb = `${date.split('.')[0]} ` + months[date.split('.')[1]];
+    const fromIndexOfMounthToMounthInVerb = `${date.split('.')[0]} ` + months[date.split('.')[1] - 1];
+
+    const {removeReception} = useContext(ReceptionContext);
+
 
 
     const closeRow = (rowMap, rowKey) => {
@@ -19,12 +23,15 @@ export const ReceptionByData = ({date, receptions, navigationObject}) => {
         }
     };
 
-    const deleteReception = (rowMap, dataKey) => {
-        closeRow(rowMap, dataKey)
-    };
-
-    const changeReception = (rowMap, dataKey) => {
-        closeRow(rowMap, dataKey)
+    const deleteReception = (rowMap, dataKey, userId, receptionId) => {
+        closeRow(rowMap, dataKey);
+        setTimeout(() => {
+            removeReception(userId, receptionId);
+        }, 700);
+    }
+    const changeReception = (rowMap, dataKey, navigate) => {
+        closeRow(rowMap, dataKey);
+        navigate();
     };
 
     
@@ -46,8 +53,21 @@ export const ReceptionByData = ({date, receptions, navigationObject}) => {
             <HiddenItemWithActions
                 rowMap={rowMap}
                 data={data}
-                deleteReception={() => deleteReception(rowMap, data.item.key)}
-                changeReception={() => changeReception(rowMap, data.item.key)}
+                deleteReception={() => deleteReception(
+                    rowMap, 
+                    data.item.key,
+                    data.item.userId,
+                    data.item.id
+                )}
+                changeReception={() => changeReception(rowMap, data.item.key,
+                    navigationObject.navigate.bind(
+                        this,
+                        navigationRoutes.changeReception.route, 
+                        {
+                            userId: data.item.userId,
+                            receptionId: data.item.id
+                        }
+                    ))}
             />
         )
     };
