@@ -1,49 +1,57 @@
-export const DiagnoseValidation = (value, bad, good) => {
-    if(value.length < 4){
-        bad()
-    }else{
-        good()
-    }
-};
-
-export const BaseValidation =  (value, bad, good, index) => {
-    if(value.length < index){
-        bad()
-    }else{
-        good()
-    }
-};
-
-export const ToothValidation = (value, bad, good) => {
-    if(value.length < 1 || isNaN(value)){
-        bad()
-    }else{
-        good()
-    }
-};
-
-export const phoneNumberValidation = (value, bad, good) => {
-    if(value.length < 5){
-        bad()
-    }else{
-        good()
-    }
-};
-
-export const dataValidation = (value, bad, good) => {
-    if(value.length < 5){
-        bad()
+const validate = (expression, bad, good) => {
+    if(expression){
+        bad();
     }else{
         good();
     }
 };
 
+export const DiagnoseValidation = (value, bad, good) => {
+    validate(
+        value.length < 4,
+        bad,
+        good
+    )
+};
+
+export const BaseValidation =  (value, bad, good, index) => {
+    validate(
+        value.length < index,
+        bad,
+        good
+    )
+};
+
+export const ToothValidation = (value, bad, good) => {
+    validate(
+        value.length < 1 || isNaN(value),
+        bad,
+        good
+    )
+};
+
+export const phoneNumberValidation = (value, bad, good) => {
+    validate(
+        value.length < 5,
+        bad,
+        good
+    )
+};
+
+export const dataValidation = (value, bad, good) => {
+    validate(
+        value.length < 5,
+        bad,
+        good
+    )
+};
+
 export const priceValidation = (value, bad, good) => {
-    if(value.length < 1){
-        bad()
-    }else{
-        good()
-    }
+    validate(
+        value.length < 1,
+        bad,
+        good
+    )
 };
 
 

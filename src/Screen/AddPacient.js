@@ -5,7 +5,7 @@ import { Input } from '../components/Input/Input';
 import { Btn as BaseBtn } from '../components/UI/Btn/Btn';
 import { baseBtn } from '../components/UI/Btn/BtnsTypes';
 import { Entypo as PlusIcon } from '@expo/vector-icons'; 
-import { accentGreen } from '../styles/colorsApp';
+import { accentGreen, mainBg } from '../styles/colorsApp';
 import { BtnBoxWithContent, BtnWithMargin, FormBlock, FormTitle, TextBtnBox } from '../components/helpers/FormBlock';
 import { navigationRoutes } from '../../App';
 import { BaseValidation } from '../components/Input/validationRules';
@@ -94,7 +94,7 @@ export const AddPacient = ({navigation}) => {
 
 
     return (
-        <Container bg={'#fff'}>
+        <Container bg={mainBg}>
             <Wrapper>
                 <FormTitle>
                     Добавить пациента

@@ -6,7 +6,7 @@ import { Input } from '../components/Input/Input';
 import { Btn as BaseBtn } from '../components/UI/Btn/Btn';
 import { baseBtn } from '../components/UI/Btn/BtnsTypes';
 import { Entypo as PlusIcon } from '@expo/vector-icons'; 
-import { accentGreen } from '../styles/colorsApp';
+import { accentGreen, mainBg } from '../styles/colorsApp';
 import { InputGroup } from '../components/Input/InputGroup';
 import { ReceptionContext } from '../States/Contexts/ReceptionContext';
 import { navigationRoutes } from '../../App';
@@ -84,7 +84,7 @@ export const AddReception = ({navigation}) => {
 
 
     return (
-        <Container bg={'#fff'}>
+        <Container bg={mainBg}>
             <Wrapper>
                 <FormBlock>
                     <Input 

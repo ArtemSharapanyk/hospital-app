@@ -3,7 +3,7 @@ import { Container } from '../components/helpers/Container';
 import { BtnBoxWithContent, BtnWithMargin, FormBlock, TextBtnBox } from '../components/helpers/FormBlock';
 import { Btn as BaseBtn } from '../components/UI/Btn/Btn';
 import { InputGroup } from '../components/Input/InputGroup';
-import { accent } from '../styles/colorsApp';
+import { accent, mainBg } from '../styles/colorsApp';
 import { baseBtn } from '../components/UI/Btn/BtnsTypes';
 import { Input } from '../components/Input/Input';
 import { Wrapper } from '../components/helpers/Wrapper';
@@ -80,7 +80,7 @@ export const ChangeReception = ({route, navigation}) => {
 
 
     return (
-        <Container bg={'#fff'}>
+        <Container bg={mainBg}>
             <Wrapper>
                 <FormBlock>
                     <Input 
